@@ -18,5 +18,7 @@ namespace PeopleManagement.Core.Models
         //reference to Person
         public Guid PersonId { get; set; }
         public Person Person { get; set; } = null!;
+
+        public bool IsDeleted { get; set; } //for soft delete
     }
 }

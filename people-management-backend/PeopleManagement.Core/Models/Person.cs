@@ -16,5 +16,7 @@ namespace PeopleManagement.Core.Models
         public DateTime? LastModified { get; set; }
 
         public ICollection<Address> Addresses { get; set; } = [];
+
+        public bool IsDeleted { get; set; } //soft delete
     }
 }
