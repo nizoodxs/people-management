@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PeopleManagement.Infrastructure.Data
 {
-    public class PersonDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public PersonDbContext(DbContextOptions<PersonDbContext> options): base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { }
 
         public DbSet<Person> People { get; set; }
         public DbSet<Address> Addresses { get; set; }
