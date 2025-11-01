@@ -3,7 +3,7 @@ using PeopleManagement.Core.Models;
 
 namespace PeopleManagement.Api.Services
 {
-    public class AddressService
+    public class AddressService: IAddressService
     {
         private readonly IAddressRepository _addressRepository;
         public AddressService(IAddressRepository addressRepository) => _addressRepository = addressRepository;

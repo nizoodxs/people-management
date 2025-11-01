@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PeopleManagement.Api.Services;
+using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Core.Models;
 using System.Threading.Tasks;
 
@@ -11,9 +12,9 @@ namespace PeopleManagement.Api.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly PersonService _personService;
+        private readonly IPersonService _personService;
 
-        public PersonController(PersonService personService)
+        public PersonController(IPersonService personService)
         {
             _personService = personService;
         }

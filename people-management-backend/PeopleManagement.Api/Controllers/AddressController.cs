@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PeopleManagement.Api.Services;
+using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Core.Models;
 using System.Threading.Tasks;
 
@@ -11,9 +12,9 @@ namespace PeopleManagement.Api.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
-        private readonly AddressService _addressService;
+        private readonly IAddressService _addressService;
 
-        public AddressController(AddressService addressService)
+        public AddressController(IAddressService addressService)
         {
             _addressService = addressService;
         }
@@ -29,7 +30,7 @@ namespace PeopleManagement.Api.Controllers
 
         // GET api/<AddressController>/5
         [HttpGet("{id}")]
-        public async Task<Address> Get(Guid id)
+        public async Task<Address?> Get(Guid id)
         {
             var address = await _addressService.GetAddressByIdAsync(id);
             return address;

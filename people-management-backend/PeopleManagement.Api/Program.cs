@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PeopleManagement.Api.Services;
 using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Infrastructure.Data;
 using PeopleManagement.Infrastructure.Repositories;
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 // DI
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 
 //swagger
 builder.Services.AddSwaggerGen();

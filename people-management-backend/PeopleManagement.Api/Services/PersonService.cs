@@ -3,7 +3,7 @@ using PeopleManagement.Core.Models;
 
 namespace PeopleManagement.Api.Services
 {
-    public class PersonService
+    public class PersonService : IPersonService
     {
         private readonly IPersonRepository _personRepository;
         public PersonService(IPersonRepository personRepository) => _personRepository = personRepository;
