@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PeopleManagement.Core.Interfaces
 {
-    public interface IPersonRepository
+    public interface IManagementRepository
     {
         Task<Person?> GetPersonByIdAsync(Guid id);
         Task<IEnumerable<Person>> GetAllPeopleAsync();
