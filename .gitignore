@@ -1,34 +1,82 @@
-# From .NET Core 3.0 you can use the command: `dotnet new gitignore` to generate a customizable .gitignore file
+# =========================================
+# OS / global
+# =========================================
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
-*.swp
-*.*~
-project.lock.json
+# macOS
 .DS_Store
-*.pyc
+.AppleDouble
+.LSOverride
 
-# Visual Studio Code
-.vscode
+# Linux
+*~
+
+# =========================================
+# .NET / C# / Visual Studio
+# =========================================
+# Build outputs
+[Bb]in/
+[Oo]bj/
+*.log
+*.vs/
 
 # User-specific files
-*.suo
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
 
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-build/
-bld/
-[Bb]in/
-[Oo]bj/
-msbuild.log
-msbuild.err
-msbuild.wrn
+# Rider / JetBrains
+.idea/
+*.iml
 
-# Visual Studio 2015
-.vs/
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# EF Core Migrations auto-generated files (optional)
+Migrations/**/*.Designer.cs
+Migrations/**/*.resx
+Migrations/**/*.pdb
+
+# ASP.NET Core runtime files
+wwwroot/
+*.db
+*.sqlite
+
+# Logs and reports
+*.tlog
+*.vsix
+*.cache
+
+# =========================================
+# Angular / Node.js
+# =========================================
+# Node modules
+frontend/node_modules/
+
+# Angular build outputs
+frontend/dist/
+frontend/out-tsc/
+frontend/.angular/
+
+# Environment files (optional, if containing secrets)
+frontend/src/environments/environment*.ts
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE / editor
+frontend/.vscode/
+frontend/.idea/
+
+# Angular IDE settings
+.angular/
+.vscode/
