@@ -14,9 +14,11 @@ namespace PeopleManagement.Api.Controllers
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _addressService;
+        private readonly ILogger<AddressController> _logger;
 
-        public AddressController(IAddressService addressService)
+        public AddressController(ILogger<AddressController> logger, IAddressService addressService)
         {
+            _logger = logger;
             _addressService = addressService;
         }
 
@@ -25,6 +27,7 @@ namespace PeopleManagement.Api.Controllers
         [HttpGet("for-person/{personId}")]
         public async Task<IEnumerable<Address>> GetAddressForPerson(Guid personId)
         {
+            _logger.LogInformation("Fetching address for person: " + personId);
             var addressses = await _addressService.GetAllAddressForPersonAsync(personId);
             return addressses;
         }

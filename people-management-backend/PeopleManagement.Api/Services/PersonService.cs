@@ -7,12 +7,23 @@ namespace PeopleManagement.Api.Services
     public class PersonService : IPersonService
     {
         private readonly IPersonRepository _personRepository;
-        public PersonService(IPersonRepository personRepository) => _personRepository = personRepository;
+        private readonly ILogger<PersonService> _logger;
+
+        public PersonService(ILogger<PersonService> logger, IPersonRepository personRepository)
+        {
+            _logger = logger;
+            _personRepository = personRepository;
+        }
 
         public async Task<GetPersonDTO?> GetPersonByIdAsync(Guid id)
         { 
             var person = await _personRepository.GetPersonByIdAsync(id);
-            if (person == null) return null;
+
+            if (person == null)
+            {
+                _logger.LogWarning("Person with id not found");
+                return null;
+            }
             return PersonMapper.ToGetPersonDTO(person);
         }
         public async Task<IEnumerable<GetPersonDTO>> GetAllPeopleAsync()

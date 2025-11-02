@@ -7,7 +7,13 @@ namespace PeopleManagement.Api.Services
     public class AddressService: IAddressService
     {
         private readonly IAddressRepository _addressRepository;
-        public AddressService(IAddressRepository addressRepository) => _addressRepository = addressRepository;
+        private readonly ILogger<AddressService> _logger;
+
+        public AddressService(ILogger<AddressService> logger, IAddressRepository addressRepository)
+        {
+            _logger = logger;
+            _addressRepository = addressRepository;
+        }
 
         public async Task<Address?> GetAddressByIdAsync(Guid id)
         {

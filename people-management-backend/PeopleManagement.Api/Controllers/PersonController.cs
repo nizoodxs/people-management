@@ -14,9 +14,11 @@ namespace PeopleManagement.Api.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonService _personService;
+        private readonly ILogger<PersonController> _logger;
 
-        public PersonController(IPersonService personService)
+        public PersonController(ILogger<PersonController> logger, IPersonService personService)
         {
+            _logger = logger;
             _personService = personService;
         }
 
@@ -24,6 +26,7 @@ namespace PeopleManagement.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<GetPersonDTO>> Get()
         {
+            _logger.LogInformation("Fetching all people");
             var people = await _personService.GetAllPeopleAsync();
             return people;
         }

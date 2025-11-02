@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using PeopleManagement.Api.Middlewares;
 using PeopleManagement.Api.Services;
 using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Infrastructure.Data;
 using PeopleManagement.Infrastructure.Repositories;
+using Serilog;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +38,10 @@ builder.Services.AddCors(options =>
         });
 });
 
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,6 +59,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 
 app.Run();
