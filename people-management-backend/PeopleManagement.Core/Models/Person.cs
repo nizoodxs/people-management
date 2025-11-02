@@ -17,6 +17,6 @@ namespace PeopleManagement.Core.Models
 
         public ICollection<Address> Addresses { get; set; } = [];
 
-        public bool IsDeleted { get; set; } //soft delete
+        //public bool IsDeleted { get; set; } //soft delete
     }
 }

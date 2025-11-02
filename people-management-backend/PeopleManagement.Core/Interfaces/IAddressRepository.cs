@@ -11,7 +11,7 @@ namespace PeopleManagement.Core.Interfaces
     {
         Task<Address?> GetAddressByIdAsync(Guid id);
         Task<IEnumerable<Address>> GetAllAddressesForPersonAsync(Guid personId);
-        Task AddAddressToPersonAsync(Guid personId, Address address);
+        Task AddAddressToPersonAsync(Address address);
         Task UpdateAddressAsync(Address address);
         Task DeleteAddress(Guid addressId);
     }

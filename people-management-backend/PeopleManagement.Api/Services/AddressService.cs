@@ -1,4 +1,5 @@
-﻿using PeopleManagement.Core.Interfaces;
+﻿using PeopleManagement.Core.DTOs;
+using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Core.Models;
 
 namespace PeopleManagement.Api.Services
@@ -16,9 +17,9 @@ namespace PeopleManagement.Api.Services
         {
             return await _addressRepository.GetAllAddressesForPersonAsync(personId);
         }
-        public async Task AddAddressToPersonAsync(Guid personId, Address address)
+        public async Task AddAddressToPersonAsync(Guid personId, CreateAddressDTO addressDTO)
         {
-            await _addressRepository.AddAddressToPersonAsync(personId, address);
+            await _addressRepository.AddAddressToPersonAsync(AddressMapper.ToAddress(personId, addressDTO));
         }
         public async Task UpdateAddressAsync(Address address)
         {

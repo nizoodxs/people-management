@@ -19,11 +19,12 @@ namespace PeopleManagement.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task AddAddressToPersonAsync(Guid personId, Address address)
+        public async Task AddAddressToPersonAsync(Address address)
         {
-            var person = await _dbContext.People.FindAsync(personId) ?? throw new Exception("Person does not exists");
+            var person = await _dbContext.People.FindAsync(address.PersonId) ?? throw new Exception("Person does not exists");
             address.Person = person;
             await _dbContext.Addresses.AddAsync(address);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAddress(Guid addressId)

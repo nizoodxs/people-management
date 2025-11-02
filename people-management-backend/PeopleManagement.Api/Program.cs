@@ -23,6 +23,18 @@ builder.Services.AddScoped<IAddressService, AddressService>();
 //swagger
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +47,7 @@ if (app.Environment.IsDevelopment())
         config.SwaggerEndpoint("/swagger/v1/swagger.json", "People Management API v1");
         config.RoutePrefix = string.Empty; //to set swagger UI at root url
     });
+    app.UseCors("AllowAngular");
 }
 
 app.UseHttpsRedirection();

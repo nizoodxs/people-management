@@ -1,4 +1,5 @@
-﻿using PeopleManagement.Core.Models;
+﻿using PeopleManagement.Core.DTOs;
+using PeopleManagement.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace PeopleManagement.Core.Interfaces
     {
         Task<Address?> GetAddressByIdAsync(Guid id);
         Task<IEnumerable<Address>> GetAllAddressForPersonAsync(Guid personId);
-        Task AddAddressToPersonAsync(Guid personId, Address address);
+        Task AddAddressToPersonAsync(Guid personId, CreateAddressDTO address);
         Task UpdateAddressAsync(Address address);
         Task DeleteAddressAsync(Guid id);
     }

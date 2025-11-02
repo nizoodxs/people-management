@@ -12,7 +12,7 @@ using PeopleManagement.Infrastructure.Data;
 namespace PeopleManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251101203102_InitialCreate")]
+    [Migration("20251102153510_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -43,9 +43,6 @@ namespace PeopleManagement.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
@@ -75,9 +72,6 @@ namespace PeopleManagement.Infrastructure.Migrations
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");

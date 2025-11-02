@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PeopleManagement.Api.Services;
+using PeopleManagement.Core.DTOs;
 using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Core.Models;
 using System.Threading.Tasks;
@@ -38,9 +39,9 @@ namespace PeopleManagement.Api.Controllers
 
         // POST api/<AddressController>
         [HttpPost]
-        public async Task Post([FromQuery]Guid personId, [FromBody] Address address)
+        public async Task Post([FromBody] AddAddressDTO addressDto)
         {
-            await _addressService.AddAddressToPersonAsync(personId, address);
+            await _addressService.AddAddressToPersonAsync(addressDto.personId, addressDto.address);
         }
 
         // PUT api/<AddressController>/5

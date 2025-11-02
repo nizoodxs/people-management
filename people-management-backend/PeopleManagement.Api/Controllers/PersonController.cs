@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PeopleManagement.Api.Services;
+using PeopleManagement.Core.DTOs;
 using PeopleManagement.Core.Interfaces;
 using PeopleManagement.Core.Models;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace PeopleManagement.Api.Controllers
 
         // GET: api/<PeopleController>
         [HttpGet]
-        public async Task<IEnumerable<Person>> Get()
+        public async Task<IEnumerable<GetPersonDTO>> Get()
         {
             var people = await _personService.GetAllPeopleAsync();
             return people;
@@ -29,7 +30,7 @@ namespace PeopleManagement.Api.Controllers
 
         // GET api/<PeopleController>/5
         [HttpGet("{id}")]
-        public async Task<Person?> Get(Guid id)
+        public async Task<GetPersonDTO?> Get(Guid id)
         {
             var person = await _personService.GetPersonByIdAsync(id);
             return person;
@@ -45,9 +46,9 @@ namespace PeopleManagement.Api.Controllers
 
         // PUT api/<PeopleController>/5
         [HttpPut("{id}")]
-        public async Task Put(Guid id, [FromBody] Person person)
+        public async Task Put(Guid id, [FromBody] UpdatePersonDTO person)
         {
-            await _personService.UpdatePersonAsync(person);
+            await _personService.UpdatePersonAsync(id, person);
         }
 
         // DELETE api/<PeopleController>/5
