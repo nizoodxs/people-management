@@ -23,7 +23,7 @@ The backend is divided into API, Core and Infrastructure
 - The API is the presentation layer. The application layer typically found in other clean architecture is mixed here in API project.
 - The Infrastructure is for DB connection and any third party api connections if required
 
-## Architecture discisions
+## Architecture descisions
 - Dependency injection, Serilog logging, Swagger for internal testing, xUnit for unit and integration testing, MoQ for mocking
 
 # Running the backend locally
